@@ -7,5 +7,14 @@
 
 class String
   def every_other_char
-  end
+   harry =Array.new
+    
+    each_char.with_index{|char,index|#p index
+       harry << char if index.even?
+      }
+      p harry.join
+ end
+ 
 end
+
+"abcdefg".every_other_char  # => "aceg"
