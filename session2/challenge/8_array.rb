@@ -1,4 +1,5 @@
 # Given an array of elements, return true if any element shows up three times in a row
+=begin
 def got_three? (array)
    counts = Hash.new 0
   array.each do |x|
@@ -19,7 +20,7 @@ test = x.map.select {|x|
 
 test.empty? ? false : true
 
-=begin
+
 x = test.map.each { |e|
   e.empty? p false
 
@@ -30,10 +31,15 @@ end
   #x >=3 ? test = true : test = false
 
 #}
-=end
+
 end
-
-
+=end
+def got_three?(elements)
+  elements.each_cons 3 do |a, b, c|
+    return true if a == b && b == c
+  end
+  false
+end
 
 
 
