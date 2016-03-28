@@ -17,17 +17,52 @@
 
 
 
+
+# date docs are at: http://ruby-doc.org/core/classes/Date.html
+# don't spend too much time worrying about them :)
+require 'date'
+class User
+  attr_accessor :username, :blogs
+  def initialize (username)
+    @username = username
+    @blogs = []
+  end
+  def add_blog (date, text)
+    @date = date
+    @text = text
+    @blogs << [date,text]
+
+  end
+
+end
+class Blog
+  attr_accessor :text, :date, :user
+  def initialize (date, user, text)
+    @date = date
+    @user = user
+    @text = text
+  end
+  def summary
+    text
+  end
+end
+
+
+
 # ==========  EXAMPLE  ==========
 #
-# lissa = User.new 'QTSort'
-# lissa.username                  # => "QTSort"
-# lissa.blogs                     # => []
 #
-# lissa.add_blog Date.parse("2010-05-28") , "Sailor Mars is my favourite"
-# lissa.blogs                     # => [ blog1 ]
+
+
+lissa = User.new 'QTSort'
+p lissa.username                  # => "QTSort"
+p lissa.blogs                     # => []
+
+lissa.add_blog Date.parse("2010-05-28") , "Sailor Mars is my favourite"
+p lissa.blogs                     # => [ blog1 ]
 #
-# blog1 = lissa.blogs.first
-# blog1.user                      # => lissa
+p blog1 = lissa.blogs.first
+ blog1.user                      # => lissa
 #
 # Blog.new Date.parse("2007-01-02"), lissa, "Going dancing!"                                    # we'll call this blog2
 # Blog.new Date.parse("2006-01-02"), lissa, "For the last time, fuck facebook >.<"              # we'll call this blog3
@@ -58,9 +93,3 @@
 #                       From the school of revision, Comes the standard inventor's rule, Books of subtle notation Compositions, all original
 #                       I am a pioneer, synthetic engineer, On the brink of discovery, On the eve of historic light, Worked in secret for decades,
 #                       All my labor will be lost with time
-
-
-
-# date docs are at: http://ruby-doc.org/core/classes/Date.html
-# don't spend too much time worrying about them :)
-require 'date'
